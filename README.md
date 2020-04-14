@@ -12,3 +12,12 @@ Library for Wp Desk Coding Standards in plugins.
 # Installation
 
 `composer require --dev wpdesk/wp-code-sniffer`
+
+# Usage
+
+Copy `phpcs.xml.dist` file to plugin root directory. Change `enter-plugin-text-domain-here` to plugin text domain.
+
+# PHP Storm
+
+Goto Settings->Languages & Frameworks->PHP->Quality Tools, in PHP_Codesniffer select Local in Configuration. Click `...` and empty path. Click OK.
+Next open composer.json file and click `Update` (on top of file).
