@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<ruleset name="WP Desk Plugin">
+<ruleset name="WPDeskPlugin">
 	<description>Sniffs for WordPress WPDesk plugins</description>
 
 	<config name="testVersion" value="5.6-"/>
