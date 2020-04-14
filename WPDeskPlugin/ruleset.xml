@@ -6,6 +6,9 @@
 
 	<arg name="extensions" value="php"/>
 
+	<exclude-pattern>tests/*</exclude-pattern>
+	<exclude-pattern>scoper.inc.php</exclude-pattern>
+
 	<rule ref="PHPCompatibility"/>
 	<rule ref="WordPress"/>
 
