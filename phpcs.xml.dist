@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<ruleset name="WordPress Coding Standards for WP Desk Plugin">
+	<description>Sniffs for WordPress WPDesk plugins</description>
+
+	<config name="testVersion" value="5.6-"/>
+
+	<arg name="extensions" value="php"/>
+
+	<rule ref="PHPCompatibility"/>
+	<rule ref="WordPress"/>
+
+	<!-- Remove checking if classes are in class- files -->
+	<rule ref="WordPress.Files.FileName">
+		<exclude-pattern>/class/.*\.php</exclude-pattern>
+	</rule>
+
+	<rule ref="WordPress.Files.FileName.InvalidClassFileName">
+    	<exclude-pattern>/class/.*\.php</exclude-pattern>
+    </rule>
+
+	<rule ref="WordPress.NamingConventions.ValidVariableName">
+    	<exclude-pattern>/class/.*\.php</exclude-pattern>
+    </rule>
+
+    <rule ref="Generic.Commenting.DocComment.MissingShort">
+        <exclude-pattern>\.php</exclude-pattern>
+    </rule>
+</ruleset>
