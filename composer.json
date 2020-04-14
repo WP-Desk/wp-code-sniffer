@@ -4,7 +4,7 @@
     "license": "MIT",
     "keywords": ["wordpress", "code sniffer", "admin"],
     "homepage": "https://gitlab.com/wpdesk/wp-code-sniffer",
-    "type": "library",
+    "type": "phpcodesniffer-standard",
     "minimum-stability": "stable",
     "authors": [
         {
