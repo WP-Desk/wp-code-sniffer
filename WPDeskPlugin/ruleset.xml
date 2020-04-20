@@ -14,15 +14,15 @@
 
 	<!-- Remove checking if classes are in class- files -->
 	<rule ref="WordPress.Files.FileName">
-		<exclude-pattern>/class/.*\.php</exclude-pattern>
+		<exclude-pattern>/class*/.*\.php</exclude-pattern>
 	</rule>
 
 	<rule ref="WordPress.Files.FileName.InvalidClassFileName">
-    	<exclude-pattern>/class/.*\.php</exclude-pattern>
+    	<exclude-pattern>/class*/.*\.php</exclude-pattern>
     </rule>
 
 	<rule ref="WordPress.NamingConventions.ValidVariableName">
-    	<exclude-pattern>/class/.*\.php</exclude-pattern>
+    	<exclude-pattern>/class*/.*\.php</exclude-pattern>
     </rule>
 
     <rule ref="Generic.Commenting.DocComment.MissingShort">
