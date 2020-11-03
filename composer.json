@@ -5,7 +5,8 @@
     "keywords": ["wordpress", "code sniffer", "admin"],
     "homepage": "https://gitlab.com/wpdesk/wp-code-sniffer",
     "type": "phpcodesniffer-standard",
-    "minimum-stability": "stable",
+    "minimum-stability": "beta",
+    "prefer-stable": true,
     "authors": [
         {
             "name": "grola",
