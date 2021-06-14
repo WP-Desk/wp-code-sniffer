@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.2.1] - 2021-06-14
+### Fixed
+- Removed wrapping operations in brackets
+
 ## [1.2.0] - 2021-06-14
 ### Changed
 - Fully rewritten CS rules to adhere developers needs
