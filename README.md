@@ -1,23 +1,19 @@
-[![pipeline status](https://gitlab.com/wpdesk/wp-code-sniffer/badges/master/pipeline.svg)](https://gitlab.com/wpdesk/wp-code-sniffer/pipelines) 
-[![coverage report](https://gitlab.com/wpdesk/wp-code-sniffer/badges/master/coverage.svg?job=integration+test+lastest+coverage)](https://gitlab.com/wpdesk/wp-code-sniffer/commits/master) 
-[![Latest Stable Version](https://poser.pugx.org/wpdesk/wp-code-sniffer/v/stable)](https://packagist.org/packages/wpdesk/wp-code-sniffer) 
-[![Total Downloads](https://poser.pugx.org/wpdesk/wp-code-sniffer/downloads)](https://packagist.org/packages/wpdesk/wp-code-sniffer) 
-[![Latest Unstable Version](https://poser.pugx.org/wpdesk/wp-code-sniffer/v/unstable)](https://packagist.org/packages/wpdesk/wp-code-sniffer) 
-[![License](https://poser.pugx.org/wpdesk/wp-code-sniffer/license)](https://packagist.org/packages/wpdesk/wp-code-sniffer) 
+# WP Desk Coding Standards
 
+Set of general WordPress standards enhanced by WP Desk coding style.
 
-Library for Wp Desk Coding Standards in plugins.
-===============================================
+## Installation & Usage
 
-# Installation
+To install this set of standards simply add the library to your require-dev in `composer.json` or run:
 
 `composer require --dev wpdesk/wp-code-sniffer`
 
-# Usage
+Copy `phpcs.xml.dist` and `.editorconfig` to your project folder, then set needed config like `text_domain`, etc.
 
-Copy `phpcs.xml.dist` file to plugin root directory. Change `enter-plugin-text-domain-here` to plugin text domain.
+## Integration with PHP Storm
 
-# PHP Storm
+Go to *Settings→Languages & Frameworks→PHP→Quality Tools* in PHP_CodeSniffer select *Local* in Configuration.
 
-Goto Settings->Languages & Frameworks->PHP->Quality Tools, in PHP_Codesniffer select Local in Configuration. Click `...` and empty path. Click OK.
-Next open composer.json file and click `Update` (on top of file).
+You can also select more settings by clicking `...`. Clear the path or set it to globally installed `phpcs` if you have locally installed dependencies.
+
+Secondly, in *Settings→Inspections→Quality Tools* check the box **PHP_CodeSniffer inspections** and set coding standards to custom path pointing to your `phpcs.xml.dist` file.

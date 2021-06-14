@@ -1,31 +1,159 @@
 <?xml version="1.0"?>
-<ruleset name="WPDeskPlugin">
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="WPDeskPlugin">
+
 	<description>Sniffs for WordPress WPDesk plugins</description>
 
-	<config name="testVersion" value="5.6-"/>
+    <!-- Always exclude all files in version management related directories. -->
+    <exclude-pattern>*/.git/*</exclude-pattern>
+    <exclude-pattern>*/.wordpress-svn/*</exclude-pattern>
 
-	<arg name="extensions" value="php"/>
+    <!-- Always exclude all files in dependency related directories. -->
+    <exclude-pattern>*/node_modules/*</exclude-pattern>
+    <exclude-pattern>*/vendor(_prefixed)?/*</exclude-pattern>
 
-	<exclude-pattern>tests/*</exclude-pattern>
-	<exclude-pattern>scoper.inc.php</exclude-pattern>
+	<!-- Always exclude all tests. Differences between PHPUnit, mocking libraries and WPCS make it hard to enforce some CS. -->
+	<exclude-pattern>*/tests/*</exclude-pattern>
 
-	<rule ref="PHPCompatibility"/>
-	<rule ref="WordPress"/>
+	<exclude-pattern>scoper\.inc\.php$</exclude-pattern>
 
-	<!-- Remove checking if classes are in class- files -->
-	<rule ref="WordPress.Files.FileName">
-		<exclude-pattern>/class*/.*\.php</exclude-pattern>
+    <rule ref="WordPress">
+        <!-- Follow PSR-4 for autoloading naming convention -->
+        <exclude name="WordPress.Files.FileName"/>
+
+        <!-- WPCS demands long arrays. WPDeskCS demands short arrays. -->
+        <exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
+
+        <!-- Demanding Yoda conditions is stupid. -->
+        <exclude name="WordPress.PHP.YodaConditions"/>
+
+		<!-- The only required comments are for the classes. -->
+		<exclude name="Squiz.Commenting.FunctionComment"/>
+		<exclude name="Generic.Commenting.DocComment.MissingShort"/>
+
+		<!-- You can use short if-else form. -->
+		<exclude name="WordPress.PHP.DisallowShortTernary"/>
+
+		<!-- If a conscious choice has been made for a non-strict comparison, that's ok.
+			 I.e. when `strict` has been explicitly set to `false` in an array comparison,
+			 it will be allowed. -->
+		<exclude name="WordPress.PHP.StrictInArray.FoundNonStrictFalse"/>
+
+		<exclude name="WordPress.WP.AlternativeFunctions" />
+
+		<!-- Sometimes it's better not to use user's timezone. -->
+		<exclude name="WordPress.DateTime.RestrictedFunctions.date_date" />
 	</rule>
 
-	<rule ref="WordPress.Files.FileName.InvalidClassFileName">
-    	<exclude-pattern>/class*/.*\.php</exclude-pattern>
+	<!-- Allow slash in hook name. -->
+	<rule ref="WordPress.NamingConventions.ValidHookName">
+		<properties>
+			<property name="additionalWordDelimiters" value="/"/>
+		</properties>
+	</rule>
+
+	<!-- Template files should have comment with passed variables. -->
+	<rule ref="Squiz.Commenting.FileComment">
+		<include-pattern>*/templates/*</include-pattern>
+		<exclude name="Squiz.Commenting.FileComment.MissingPackageTag"/>
+	</rule>
+
+    <rule ref="WordPress.Arrays.MultipleStatementAlignment">
+        <type>error</type>
+        <properties>
+            <!-- No need to adjust alignment of large arrays when the item with the largest key is removed. -->
+            <property name="exact" value="false"/>
+            <!-- Don't align multi-line items if ALL items in the array are multi-line. -->
+            <property name="alignMultilineItems" value="!=100"/>
+            <!-- Array Assignment operator should always be on the same line as the array key. -->
+            <property name="ignoreNewlines" value="false"/>
+        </properties>
     </rule>
 
-	<rule ref="WordPress.NamingConventions.ValidVariableName">
-    	<exclude-pattern>/class*/.*\.php</exclude-pattern>
-    </rule>
+    <!-- In contrast to WPCS: demand short arrays. -->
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
 
-    <rule ref="Generic.Commenting.DocComment.MissingShort">
-        <exclude-pattern>\.php</exclude-pattern>
+	<!-- Check the complexity of code in advance to prevent too complex structures. -->
+	<rule ref="Generic.Metrics.CyclomaticComplexity">
+		<properties>
+			<property name="complexity" value="15"/>
+			<property name="absoluteComplexity" value="30"/>
+		</properties>
+	</rule>
+
+	<rule ref="Generic.Metrics.NestingLevel">
+		<properties>
+			<property name="nestingLevel" value="6" />
+			<property name="absoluteNestingLevel" value="10" />
+		</properties>
+	</rule>
+
+	<rule ref="PHPCompatibilityWP">
+		<include-pattern>*\.php$</include-pattern>
+	</rule>
+	<!--
+	#############################################################################
+	ADD SOME SPECIFIC EXTRA SNIFFS
+	These may make it into WPCS at some point. If so, they can be removed here.
+	#############################################################################
+	-->
+	<!-- Error prevention: Make sure the condition in a inline if declaration is bracketed. -->
+	<rule ref="Squiz.ControlStructures.InlineIfDeclaration"/>
+
+	<!-- Error prevention: Make sure arithmetics are bracketed. -->
+	<rule ref="Squiz.Formatting.OperatorBracket.MissingBrackets"/>
+
+	<!-- CS: no blank line between the content of a function and a function close brace.-->
+	<rule ref="PSR2.Methods.FunctionClosingBrace"/>
+
+	<!-- CS: ensure exactly one blank line before each property declaration. -->
+	<rule ref="Squiz.WhiteSpace.MemberVarSpacing"/>
+
+	<!-- CS: don't allow "// end class" comments and the likes. -->
+	<rule ref="PSR12.Classes.ClosingBrace"/>
+
+	<!-- CS: enforce consistent indentation of chained object method calls. -->
+	<rule ref="PEAR.WhiteSpace.ObjectOperatorIndent">
+		<properties>
+			<property name="multilevel" value="true"/>
+		</properties>
+	</rule>
+
+	<!-- Error prevention: Ensure no git conflicts make it into the code base. -->
+	<!-- PHPCS 3.4.0: This sniff will be added to WPCS in due time and can then be removed from this ruleset.
+		 Related: https://github.com/WordPress/WordPress-Coding-Standards/issues/1500 -->
+	<rule ref="Generic.VersionControl.GitMergeConflict"/>
+
+	<!-- CS: no space between an increment/decrement operator and the variable it applies to. -->
+	<!-- PHPCS 3.4.0: This sniff will be added to WPCS in due time and can then be removed from this ruleset.
+		 Related: https://github.com/WordPress/WordPress-Coding-Standards/issues/1511 -->
+	<rule ref="Generic.WhiteSpace.IncrementDecrementSpacing"/>
+
+	<!-- QA: Function declarations should not contain parameters which will never be used. -->
+	<!-- PHPCS 3.4.0: This sniff will be added to WPCS in due time and can then be removed from this ruleset.
+		 Related: https://github.com/WordPress/WordPress-Coding-Standards/issues/1510 -->
+	<rule ref="Generic.CodeAnalysis.UnusedFunctionParameter.Found"/>
+	<rule ref="Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed"/>
+
+	<!-- CS: Ensure consistent whitespace around spread operators. -->
+	<!-- PHPCS 3.5.0: This sniff will be added to WPCS in due time and can then be removed from this ruleset.
+		 Related: https://github.com/WordPress/WordPress-Coding-Standards/issues/1762 -->
+	<rule ref="Generic.WhiteSpace.SpreadOperatorSpacingAfter"/>
+
+	<!-- CS: Disallow a leading backslash at the start of an import use statement. -->
+	<!-- PHPCS 3.5.0: This sniff may be added to WPCS in due time and can then be removed from this ruleset. -->
+	<rule ref="PSR12.Files.ImportStatement"/>
+
+	<!-- CS: Enforces that a PHP open tag is on a line by itself when used at the start of a PHP-only file. -->
+	<!-- PHPCS 3.5.0: This sniff may be added to WPCS in due time and can then be removed from this ruleset. -->
+	<rule ref="PSR12.Files.OpenTag"/>
+
+	<!-- ##### Documentation Sniffs vs empty index files ##### -->
+
+    <!-- Exclude the 'empty' index files from some documentation checks -->
+	<rule ref="Squiz.Commenting.InlineComment.NoSpaceBefore">
+        <exclude-pattern>*/index\.php$</exclude-pattern>
     </rule>
+	<rule ref="Squiz.Commenting.FileComment.WrongStyle">
+		<exclude-pattern>*/index\.php$</exclude-pattern>
+	</rule>
 </ruleset>
