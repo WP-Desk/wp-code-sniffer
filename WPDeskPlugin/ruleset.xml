@@ -99,9 +99,6 @@
 	<!-- Error prevention: Make sure the condition in a inline if declaration is bracketed. -->
 	<rule ref="Squiz.ControlStructures.InlineIfDeclaration"/>
 
-	<!-- Error prevention: Make sure arithmetics are bracketed. -->
-	<rule ref="Squiz.Formatting.OperatorBracket.MissingBrackets"/>
-
 	<!-- CS: no blank line between the content of a function and a function close brace.-->
 	<rule ref="PSR2.Methods.FunctionClosingBrace"/>
 
