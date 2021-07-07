@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.2.2] - 2021-06-16
+### Changed
+- Add phpcs.xml.dist and .editorconfig to package distribution as configuration examples to copy
+
 ## [1.2.1] - 2021-06-14
 ### Fixed
 - Removed wrapping operations in brackets
