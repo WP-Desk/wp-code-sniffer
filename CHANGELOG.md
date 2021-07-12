@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.2.3] - 2021-07-07
+### Changed
+- Removed demanding brackets with inline if statement
+
 ## [1.2.2] - 2021-06-16
 ### Changed
 - Add phpcs.xml.dist and .editorconfig to package distribution as configuration examples to copy

@@ -96,9 +96,6 @@
 	These may make it into WPCS at some point. If so, they can be removed here.
 	#############################################################################
 	-->
-	<!-- Error prevention: Make sure the condition in a inline if declaration is bracketed. -->
-	<rule ref="Squiz.ControlStructures.InlineIfDeclaration"/>
-
 	<!-- CS: no blank line between the content of a function and a function close brace.-->
 	<rule ref="PSR2.Methods.FunctionClosingBrace"/>
 
