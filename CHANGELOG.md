@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.5] - 2023-05-30
+### Changed
+- Updated wp-code-sniffer/wpcs to `dev-develop` as tagged version is outdated
+
+## [1.2.4] - 2023-04-24
+### Changed
+- Updated dependent packages
+
 ## [1.2.3] - 2021-07-07
 ### Changed
 - Removed demanding brackets with inline if statement
