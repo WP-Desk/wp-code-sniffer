@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.2.6] - 2023-05-30
+### Fixed
+- Changed excluded ruleset reference according to upstream update
+
 ## [1.2.5] - 2023-05-30
 ### Changed
 - Updated wp-code-sniffer/wpcs to `dev-develop` as tagged version is outdated
