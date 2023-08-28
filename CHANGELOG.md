@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.2.7] - 2023-08-28
+### Changed
+- Updated WPCS upstream version to 3.0
+
 ## [1.2.6] - 2023-05-30
 ### Fixed
 - Changed excluded ruleset reference according to upstream update

@@ -21,11 +21,11 @@
         <exclude name="WordPress.Files.FileName"/>
 
         <!-- WPCS demands long arrays. WPDeskCS demands short arrays. -->
-        <exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
+        <exclude name="Universal.Arrays.DisallowShortArraySyntax"/>
 
         <!-- Demanding Yoda conditions is stupid. -->
         <exclude name="WordPress.PHP.YodaConditions"/>
- 
+
 		<!-- The only required comments are for the classes. -->
 		<exclude name="Squiz.Commenting.FunctionComment"/>
 		<exclude name="Generic.Commenting.DocComment.MissingShort"/>
@@ -96,9 +96,6 @@
 	These may make it into WPCS at some point. If so, they can be removed here.
 	#############################################################################
 	-->
-	<!-- CS: no blank line between the content of a function and a function close brace.-->
-	<rule ref="PSR2.Methods.FunctionClosingBrace"/>
-
 	<!-- CS: ensure exactly one blank line before each property declaration. -->
 	<rule ref="Squiz.WhiteSpace.MemberVarSpacing"/>
 
@@ -111,27 +108,6 @@
 			<property name="multilevel" value="true"/>
 		</properties>
 	</rule>
-
-	<!-- Error prevention: Ensure no git conflicts make it into the code base. -->
-	<!-- PHPCS 3.4.0: This sniff will be added to WPCS in due time and can then be removed from this ruleset.
-		 Related: https://github.com/WordPress/WordPress-Coding-Standards/issues/1500 -->
-	<rule ref="Generic.VersionControl.GitMergeConflict"/>
-
-	<!-- CS: no space between an increment/decrement operator and the variable it applies to. -->
-	<!-- PHPCS 3.4.0: This sniff will be added to WPCS in due time and can then be removed from this ruleset.
-		 Related: https://github.com/WordPress/WordPress-Coding-Standards/issues/1511 -->
-	<rule ref="Generic.WhiteSpace.IncrementDecrementSpacing"/>
-
-	<!-- QA: Function declarations should not contain parameters which will never be used. -->
-	<!-- PHPCS 3.4.0: This sniff will be added to WPCS in due time and can then be removed from this ruleset.
-		 Related: https://github.com/WordPress/WordPress-Coding-Standards/issues/1510 -->
-	<rule ref="Generic.CodeAnalysis.UnusedFunctionParameter.Found"/>
-	<rule ref="Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed"/>
-
-	<!-- CS: Ensure consistent whitespace around spread operators. -->
-	<!-- PHPCS 3.5.0: This sniff will be added to WPCS in due time and can then be removed from this ruleset.
-		 Related: https://github.com/WordPress/WordPress-Coding-Standards/issues/1762 -->
-	<rule ref="Generic.WhiteSpace.SpreadOperatorSpacingAfter"/>
 
 	<!-- CS: Disallow a leading backslash at the start of an import use statement. -->
 	<!-- PHPCS 3.5.0: This sniff may be added to WPCS in due time and can then be removed from this ruleset. -->
