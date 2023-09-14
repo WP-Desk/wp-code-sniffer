@@ -42,6 +42,9 @@
 
 		<!-- Sometimes it's better not to use user's timezone. -->
 		<exclude name="WordPress.DateTime.RestrictedFunctions.date_date" />
+
+		<!-- Since WPCS 3.0 exceptions are treated as output and requires escaping. We don't want that... -->
+		<exclude name="WordPress.Security.EscapeOutput.ExceptionNotEscaped" />
 	</rule>
 
 	<!-- Allow slash in hook name. -->
