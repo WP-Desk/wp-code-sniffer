@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.8] - 2023-09-14
+### Added
+- Whitelisted some of WooCommerce custom capabilities for sniffs.
+### Changed
+- Removed sniff for unescaped exceptions.
+
 ## [1.2.7] - 2023-08-28
 ### Changed
 - Updated WPCS upstream version to 3.0
