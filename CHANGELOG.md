@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.3.0] - 2023-12-21
+### Added
+- Added WooCommerce sanitization and escaping functions to whitelist in security rules.
+
 ## [1.2.8] - 2023-09-14
 ### Added
 - Whitelisted some of WooCommerce custom capabilities for sniffs.
