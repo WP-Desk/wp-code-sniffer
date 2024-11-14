@@ -45,6 +45,24 @@
 
 		<!-- Since WPCS 3.0 exceptions are treated as output and requires escaping. We don't want that... -->
 		<exclude name="WordPress.Security.EscapeOutput.ExceptionNotEscaped" />
+
+		<!-- $default parameter sometimes just make sense. -->
+		<exclude name="Universal.NamingConventions.NoReservedKeywordParameterNames"/>
+
+		<!-- Complex ternary are OK. -->
+		<exclude name="Squiz.ControlStructures.InlineIfDeclaration.NotSingleLine" />
+		<exclude name="Squiz.ControlStructures.InlineIfDeclaration.NoBrackets"/>
+	</rule>
+
+	<!-- Those below are mostly noise, but worth to keep an eye on them. -->
+	<rule ref="Generic.CodeAnalysis.EmptyStatement.DetectedCatch">
+		<type>warning</type>
+	</rule>
+	<rule ref="WordPress.NamingConventions">
+		<type>warning</type>
+	</rule>
+	<rule ref="WordPress.WP.I18n.MissingTranslatorsComment">
+		<type>warning</type>
 	</rule>
 
 	<!-- Allow slash in hook name. -->
