@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.3.1] - 2024-11-14
+### Changed
+- Removed some noisy rules about comments.
+- Changed severity to warning for rules about naming conventions, missing translators comments and empty catch statements.
+
 ## [1.3.0] - 2023-12-21
 ### Added
 - Added WooCommerce sanitization and escaping functions to whitelist in security rules.
