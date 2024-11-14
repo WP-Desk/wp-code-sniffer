@@ -26,8 +26,8 @@
         <!-- Demanding Yoda conditions is stupid. -->
         <exclude name="WordPress.PHP.YodaConditions"/>
 
-		<!-- The only required comments are for the classes. -->
-		<exclude name="Squiz.Commenting.FunctionComment"/>
+		<!-- Commenting isn't something to be required from CS. -->
+		<exclude name="Squiz.Commenting"/>
 		<exclude name="Generic.Commenting.DocComment.MissingShort"/>
 
 		<!-- You can use short if-else form. -->
