@@ -3,7 +3,7 @@
 	"description": "Library for WP Desk Coding Standards in plugins.",
 	"license": "MIT",
 	"keywords": ["wordpress", "code sniffer", "admin", "phpcs"],
-	"homepage": "https://gitlab.com/wpdesk/wp-code-sniffer",
+	"homepage": "https://gitlab.wpdesk.dev/wpdesk/wp-code-sniffer",
 	"type": "phpcodesniffer-standard",
 	"prefer-stable": true,
 	"authors": [
