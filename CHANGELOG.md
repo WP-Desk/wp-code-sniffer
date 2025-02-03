@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.3.2] - 2025-02-03
+### Changed
+- Marked some more rules as warning instead of errors (multiple assignments).
+
 ## [1.3.1] - 2024-11-14
 ### Changed
 - Removed some noisy rules about comments.
