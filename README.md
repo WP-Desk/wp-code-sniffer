@@ -1,19 +1,59 @@
 # WP Desk Coding Standards
 
-Set of general WordPress standards enhanced by WP Desk coding style.
+PHPCS ruleset for WP Desk WordPress plugins.
 
-## Installation & Usage
+It builds on WordPress Coding Standards and PHPCompatibilityWP, with additional
+WP Desk conventions and WooCommerce-aware configuration.
 
-To install this set of standards simply add the library to your require-dev in `composer.json` or run:
+## Installation
 
-`composer require --dev wpdesk/wp-code-sniffer`
+```sh
+composer require --dev wpdesk/wp-code-sniffer
+```
 
-Copy `phpcs.xml.dist` and `.editorconfig` to your project folder, then set needed config like `text_domain`, etc.
+## Usage
 
-## Integration with PHP Storm
+Copy the provided example files into your project:
 
-Go to *Settings→Languages & Frameworks→PHP→Quality Tools* in PHP_CodeSniffer select *Local* in Configuration.
+```sh
+cp vendor/wpdesk/wp-code-sniffer/phpcs.xml.dist phpcs.xml.dist
+cp vendor/wpdesk/wp-code-sniffer/.editorconfig .editorconfig
+```
 
-You can also select more settings by clicking `...`. Clear the path or set it to globally installed `phpcs` if you have locally installed dependencies.
+Adjust the values in `phpcs.xml.dist`:
 
-Secondly, in *Settings→Inspections→Quality Tools* check the box **PHP_CodeSniffer inspections** and set coding standards to custom path pointing to your `phpcs.xml.dist` file.
+- `text_domain`
+- `minimum_wp_version`
+- `testVersion`
+
+Then run:
+
+```sh
+vendor/bin/phpcs
+```
+
+The example configuration scans `src` and `templates` by default.
+
+## Ruleset
+
+The included standard is:
+
+```xml
+<rule ref="WPDeskPlugin"/>
+```
+
+It includes WordPress rules, PHP compatibility checks, short array syntax,
+selected WooCommerce capabilities/functions, and excludes common generated or
+dependency directories.
+
+## PhpStorm
+
+Configure PHP_CodeSniffer in:
+
+`Settings → Languages & Frameworks → PHP → Quality Tools`
+
+Then enable:
+
+`Settings → Inspections → Quality Tools → PHP_CodeSniffer`
+
+Use your project `phpcs.xml.dist` as the custom coding standard.
